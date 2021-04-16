@@ -37,7 +37,7 @@ class GraphData(APIView):
     def get(self,request,format=None):
         y=['male','female']
         x=[592,551]
-        df=pd.read_csv(r"C:\Users\HP\Desktop\cloudearl\data\KAG_conversion_data.csv")
+        df=pd.read_csv("KAG_conversion_data.csv")
         x=df.iloc[:,6]
         a=df.iloc[:,4].value_counts()
         data1=df.iloc[:,4:6]
