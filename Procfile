@@ -1,2 +1,2 @@
 web: gunicorn ad_data.wsgi
-Note: datavisal Is your Django project file name.
+Note: ad_data Is your Django project file name.
