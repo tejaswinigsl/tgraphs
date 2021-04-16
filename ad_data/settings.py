@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--*5bt(+-%9igpdz8j@um!hrmx7=4e7ga@p%tjbas$s6=s$84us
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["tgraphs.herokuapp.com"]
 
 
 # Application definition
