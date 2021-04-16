@@ -1,0 +1,451 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+<div class='row'>
+
+<div class='col-xs-12'>
+<canvas id="myChart" ></canvas>
+</div>
+
+ <div class='col-xs-12'>
+<canvas id="myChart2"></canvas>
+</div>
+
+<div class='col-xs-12'>
+    <canvas id="myChart3"></canvas>
+    </div>
+
+    <div class='col-xs-12'>
+        <canvas id="myChart4"></canvas>
+        </div>
+        
+    <div class='col-xs-12'>
+        <canvas id="myChart5"></canvas>
+        </div>
+
+        <div class='col-xs-12'>
+            <canvas id="myChart6"></canvas>
+            </div>   
+            <div class='col-xs-12'>
+                <canvas id="myChart7"></canvas>
+                </div> 
+</div>
+</div>
+
+
+
+<script>
+{% block jquery %}
+
+var endpoint = 'api/data/'
+var DefaultData = []
+var labels = [] // 1
+var DefaultData1 =[]
+var labels1= [] // 2
+var labels2=[]
+var DefaultData2=[] // 3
+var labels3=[]
+var DefaultData3=[] // 4
+var DefaultData41=[] 
+var DefaultData42=[] //5
+var labels5=[]
+var DefaultData5=[]//6 
+var DefaultData61=[]
+var DefaultData62=[]
+var DefaultData63=[] //7
+
+$.ajax({
+  method:"GET",
+  url:endpoint,
+  success: function(graphs){
+    labels1 = graphs[0].labels
+    DefaultData1 = graphs[0].DefaultData
+    labels= graphs[1].labels1
+    DefaultData= graphs[1].DefaultData1 
+    labels2= graphs[1].labels1
+    DefaultData2= graphs[2].DefaultData2
+    labels3= graphs[3].labels3
+    DefaultData3= graphs[3].DefaultData3
+    DefaultData41=graphs[4].DefaultData41
+    DefaultData42=graphs[4].DefaultData42
+    labels5=graphs[5].labels5
+    DefaultData5=graphs[5].DefaultData5
+    DefaultData61=graphs[6].DefaultData61
+    DefaultData62=graphs[6].DefaultData62
+    DefaultData63=graphs[6].DefaultData63
+
+
+    
+
+    console.log(graphs)
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var ctx3 = document.getElementById('myChart3').getContext('2d');
+    var ctx4 = document.getElementById('myChart4').getContext('2d');
+    var ctx5 = document.getElementById('myChart5').getContext('2d');
+    var ctx6 = document.getElementById('myChart6').getContext('2d');
+    var ctx7 = document.getElementById('myChart7').getContext('2d');
+    
+
+
+
+    var myChart = new Chart(ctx2, {  // chart 2
+    type: 'bar',
+    data: {
+        labels: labels1,
+        datasets: [{
+            label:"hello",
+            data: DefaultData1,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+              
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+ 
+    options: {
+        title: {
+                display: true,
+                text: 'Count wrt Gender'
+            
+        },
+        legend:{
+            display:false
+        },
+        scales: {
+            yAxes: [{
+                scaleLabel:{
+                    display: true,
+                    labelString:'count'
+                },
+                
+                ticks: {
+                    beginAtZero: true
+                }
+                
+            }]
+        }
+    }
+});
+    var myChart = new Chart(ctx, { // chart1
+    type: "line",
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Impressions',
+            data: DefaultData,
+                    backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        
+            title: {
+                display: true,
+                text: ' Spent Vs Impressions'
+            
+        },
+        legend:{
+            display:false
+        },
+        scales: { xAxes:[{scaleLabel:{
+            display: true,
+            labelString:"Impressions"
+        }
+            
+        }],
+            yAxes: [{
+                scaleLabel:{
+                    display: true,
+                    labelString:"Spent"
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var myChart3 = new Chart(ctx3, { // chart 3
+    type: "line",
+    data: {
+        labels: labels2,
+        datasets: [{
+            label: 'Impressions',
+            data: DefaultData2,
+                    backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        
+            title: {
+                display: true,
+                text: ' Click Vs Impressions'
+            
+        },
+        legend:{
+            display:false
+        },
+        scales: { xAxes:[{scaleLabel:{
+            display: true,
+            labelString:"Impressions"
+        }
+            
+        }],
+            yAxes: [{
+                scaleLabel:{
+                    display: true,
+                    labelString:"Clicks"
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var myChart4 = new Chart(ctx4, { // chart 4
+    type: "bar",
+    data: {
+        labels: labels3,
+        datasets: [{
+            label: 'Impressions',
+            data: DefaultData3,
+                    backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        
+            title: {
+                display: true,
+                text: 'Count of Individual Ads'
+            
+        },
+        legend:{
+            display:false
+        },
+        scales: { xAxes:[{scaleLabel:{
+            display: true,
+            labelString:"xyz_campaign_id"
+        }
+            
+        }],
+            yAxes: [{
+                scaleLabel:{
+                    display: true,
+                    labelString:"Count"
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var myChart5 = new Chart(ctx5, { // chart 5
+    type: "bar",
+    data: {
+        labels: labels3,
+        datasets: [{
+            label: 'Female',
+            data: DefaultData41,
+                    backgroundColor:'pink',
+            borderColor:'pink',
+            borderWidth: 1
+        },{
+            label: 'male',
+            data: DefaultData42,
+                backgroundColor:'#34d8eb',
+            borderColor:'#34d8eb',
+            borderWidth: 1
+        }]
+    },
+    
+    options: {
+        
+            title: {
+                display: true,
+                text: 'Count of Individual Ads wrt Gender'
+            
+        },
+        legend:{
+            display:true
+        },
+        scales: { xAxes:[{scaleLabel:{
+            display: true,
+            labelString:"xyz_campaign_id"
+        }
+            
+        }],
+            yAxes: [{
+                scaleLabel:{
+                    display: true,
+                    labelString:"Count"
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var myChart6 = new Chart(ctx6, { // chart 6
+    type: "pie",
+    data: {
+        labels: labels5,
+        datasets: [{
+            label: 'Female',
+            data: DefaultData5,
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)'
+                
+            ],
+            hoverOffset: 4
+        }]
+    },
+    
+    options: {
+        
+            title: {
+                display: true,
+                text: 'Age Vs Conversion Rate'
+            
+        },
+        legend:{
+            display:true
+        },
+       
+          
+        }
+    });
+    var myChart7 = new Chart(ctx7, { // chart 7
+    type: "bar",
+    data: {
+        labels: labels5,
+        datasets: [{
+            label: 'id1',
+            data: DefaultData61,
+                    backgroundColor:'pink',
+            borderColor:'pink',
+            borderWidth: 1
+        },{
+            label: 'id2',
+            data: DefaultData62,
+                backgroundColor:'#34d8eb',
+            borderColor:'#34d8eb',
+            borderWidth: 1
+        },{
+            label: 'id3',
+            data: DefaultData63,
+                backgroundColor:'orange',
+            borderColor:'orange',
+            borderWidth: 1
+        }]
+    },
+    
+    options: {
+        
+            title: {
+                display: true,
+                text: 'Count of Individual Ads wrt Age'
+            
+        },
+        legend:{
+            display:true
+        },
+        scales: { xAxes:[{scaleLabel:{
+            display: true,
+            labelString:"Age"
+        }
+            
+        }],
+            yAxes: [{
+                scaleLabel:{
+                    display: true,
+                    labelString:"Count"
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+  },
+  error:function(error_data){
+    console.log(error_data)
+  }
+})
+
+
+
+
+{% endblock %}
+</script>
+{% endblock %}
